@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./utils/**/*.{js,ts,jsx,tsx}"],
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./utils/**/*.{js,ts,jsx,tsx}"
+  ],
   plugins: [require("daisyui")],
   darkTheme: "dark",
   darkMode: ["selector", "[data-theme='dark']"],
@@ -8,22 +12,22 @@ module.exports = {
     themes: [
       {
         light: {
-          primary: "#A7EFFF", // very light aqua
-          "primary-content": "#003B46", // deep teal text
-          secondary: "#7ED0E6", // soft aqua blue
-          "secondary-content": "#025259", // darker teal
-          accent: "#009FB7", // bright teal accent
-          "accent-content": "#E0FFFF", // light aqua text
-          neutral: "#007C91", // muted teal neutral
-          "neutral-content": "#F0FEFF",
-          "base-100": "#F0FEFF", // very pale aqua
-          "base-200": "#D8F7FB",
-          "base-300": "#A7EFFF",
-          "base-content": "#025259",
-          info: "#007C91",
-          success: "#34EEB6",
-          warning: "#FFCF72",
-          error: "#FF8863",
+          primary: "#111111",            // very dark gray
+          "primary-content": "#FFFFFF",
+          secondary: "#333333",          // dark gray
+          "secondary-content": "#FFFFFF",
+          accent: "#555555",             // medium gray
+          "accent-content": "#FFFFFF",
+          neutral: "#777777",            // neutral gray
+          "neutral-content": "#FFFFFF",
+          "base-100": "#FFFFFF",         // lightest background
+          "base-200": "#F5F5F5",         // very light gray background
+          "base-300": "#E5E5E5",         // light gray surface
+          "base-content": "#111111",     // dark text
+          info: "#888888",               // muted info gray
+          success: "#666666",            // dark gray for success
+          warning: "#555555",            // dark gray warning
+          error: "#444444",              // dark gray error
 
           "--rounded-btn": "9999rem",
           ".tooltip": {
@@ -39,27 +43,26 @@ module.exports = {
       },
       {
         dark: {
-          primary: "#025259", // strong dark teal
-          "primary-content": "#A7EFFF", // light aqua text
-          secondary: "#007C91", // teal midtone
-          "secondary-content": "#E0FFFF", // light aqua
-          accent: "#A7EFFF", // aqua accent
-          "accent-content": "#025259",
-          neutral: "#E0FFFF",
-          "neutral-content": "#009FB7",
-          "base-100": "#003B46", // deepest base
-          "base-200": "#025259",
-          "base-300": "#007C91",
-          "base-content": "#E0FFFF",
-          info: "#A7EFFF",
-          success: "#34EEB6",
-          warning: "#FFCF72",
-          error: "#FF8863",
+          primary: "#FFFFFF",            // white for dark theme primary (buttons, highlights)
+          "primary-content": "#111111",
+          secondary: "#DDDDDD",          // light gray
+          "secondary-content": "#111111",
+          accent: "#AAAAAA",             // medium gray accent
+          "accent-content": "#111111",
+          neutral: "#888888",            // neutral gray
+          "neutral-content": "#FFFFFF",
+          "base-100": "#111111",         // dark base background
+          "base-200": "#1A1A1A",         // slightly lighter dark gray
+          "base-300": "#2A2A2A",         // dark gray surface
+          "base-content": "#FFFFFF",     // text white
+          info: "#AAAAAA",
+          success: "#888888",
+          warning: "#777777",
+          error: "#666666",
 
           "--rounded-btn": "9999rem",
           ".tooltip": {
             "--tooltip-tail": "6px",
-            "--tooltip-color": "oklch(var(--p))",
           },
           ".link": {
             textUnderlineOffset: "2px",
