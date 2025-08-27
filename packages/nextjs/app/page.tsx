@@ -95,13 +95,41 @@ const BrolliLicensePage: NextPage = () => {
 
   return (
     <>
+    {/* Hero Section with Video Background and Logo Overlay */}
+    <div className="relative h-[70vh] w-full overflow-hidden">
+      {/* Background Video */}
+      <video 
+        autoPlay 
+        loop 
+        muted 
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover object-top"
+      >
+        <source src="/background.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
+      {/* Dark Overlay for better text readability */}
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40" />
+      
+      {/* Logo Overlay */}
+      <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        <div className="text-center z-10">
+                      <Image
+              src="/hero.png"
+              alt="Brolli for BUIDLers"
+              width={1200}
+              height={1200}
+              className="mx-auto mb-4 drop-shadow-2xl"
+            />
+      
+         
+        </div>
+      </div>
+    </div>
+
     <div className="flex items-center flex-col flex-grow pt-10">
       <div className="px-5">
-        <h1 className="text-center mb-8">
-          <span className="block text-2xl mb-2">Brolli</span>
-          <span className="block text-4xl font-bold">Patent License NFT System</span>
-        </h1>
-        
         <div className="flex flex-col lg:flex-row gap-8 justify-center items-start max-w-7xl mx-auto">
           {/* Left Container - Existing Minter */}
           <div className="flex-1 bg-base-200 p-6 rounded-xl border-2 border-primary">
