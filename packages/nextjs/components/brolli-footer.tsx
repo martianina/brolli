@@ -1,14 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import Navigation from "next/navigation"
-
 
 /**
- * Site footer
+ * Simplified site footer
  */
 export const Footer = () => {
   return (
-    <div className="min-h-0 py-5 px-1 mb-11 lg:mb-0">
+    <footer className="w-full py-4 flex justify-center text-sm text-gray-500">
       <div className="flex flex-wrap gap-2 justify-center">
         <span>© Optilex, LLC</span>
         <span>·</span>
@@ -20,7 +18,6 @@ export const Footer = () => {
           Terms
         </Link>
       </div>
-            
-    </div>
+    </footer>
   );
 };
