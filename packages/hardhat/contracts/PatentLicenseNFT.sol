@@ -57,7 +57,7 @@ contract PatentLicenseNFT is ERC721Enumerable, Ownable {
 
 		string memory description = string(
 			abi.encodePacked(
-				"This NFT represents a transferable, non-exclusive, worldwide, perpetual, single-use license under U.S. Patent No. ",
+				"Brolli NFT represents a non-transferable, non-exclusive, worldwide, perpetual, single-use license under U.S. Patent No. ",
 				t.patentNumber,
 				". License rights transfer automatically with the NFT. Full legal terms attached."
 			)
@@ -74,7 +74,7 @@ contract PatentLicenseNFT is ERC721Enumerable, Ownable {
 			'"title":"', t.patentTitle, '"},',
 			'"rights":{',
 			'"scope":"Non-exclusive, worldwide, perpetual, single-use",',
-			'"transferable":true},',
+			'"transferable":false},',
 			'"governing_law":"', t.governingLaw, '",',
 			'"warranties":"none"},',
 			'"resources":{',

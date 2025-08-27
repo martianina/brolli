@@ -39,8 +39,8 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable {
 
 		bytes memory json = abi.encodePacked(
 			"{",
-			'"name":"Patent License NFT - ', m.patentName, '",',
-			'"description":"This NFT represents a patent license. The provenanceCid references the Patent NFT contract hash.",',
+			'"name":"Brolli for BUIDLers ', m.patentName, '",',
+			'"description":"Legal IP cover for developers of decentralized systems",',
 			'"image":"', m.imageUri, '",',
 			'"attributes":[',
 			'{"trait_type":"Provenance CID","value":"', m.provenanceCid, '"}',
