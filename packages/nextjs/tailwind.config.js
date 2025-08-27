@@ -4,30 +4,28 @@ module.exports = {
   plugins: [require("daisyui")],
   darkTheme: "dark",
   darkMode: ["selector", "[data-theme='dark']"],
-  // DaisyUI theme colors
   daisyui: {
     themes: [
       {
         light: {
-          primary: "#C8F5FF",
-          "primary-content": "#026262",
-          secondary: "#89d7e9",
-          "secondary-content": "#088484",
-          accent: "#026262",
-          "accent-content": "#E9FBFF",
-          neutral: "#088484",
-          "neutral-content": "#F0FCFF",
-          "base-100": "#F0FCFF",
-          "base-200": "#E1FAFF",
-          "base-300": "#C8F5FF",
-          "base-content": "#088484",
-          info: "#026262",
+          primary: "#A7EFFF", // very light aqua
+          "primary-content": "#003B46", // deep teal text
+          secondary: "#7ED0E6", // soft aqua blue
+          "secondary-content": "#025259", // darker teal
+          accent: "#009FB7", // bright teal accent
+          "accent-content": "#E0FFFF", // light aqua text
+          neutral: "#007C91", // muted teal neutral
+          "neutral-content": "#F0FEFF",
+          "base-100": "#F0FEFF", // very pale aqua
+          "base-200": "#D8F7FB",
+          "base-300": "#A7EFFF",
+          "base-content": "#025259",
+          info: "#007C91",
           success: "#34EEB6",
           warning: "#FFCF72",
           error: "#FF8863",
 
           "--rounded-btn": "9999rem",
-
           ".tooltip": {
             "--tooltip-tail": "6px",
           },
@@ -41,25 +39,24 @@ module.exports = {
       },
       {
         dark: {
-          primary: "#026262",
-          "primary-content": "#C8F5FF",
-          secondary: "#107575",
-          "secondary-content": "#E9FBFF",
-          accent: "#C8F5FF",
-          "accent-content": "#088484",
-          neutral: "#E9FBFF",
-          "neutral-content": "#11ACAC",
-          "base-100": "#11ACAC",
-          "base-200": "#088484",
-          "base-300": "#026262",
-          "base-content": "#E9FBFF",
-          info: "#C8F5FF",
+          primary: "#025259", // strong dark teal
+          "primary-content": "#A7EFFF", // light aqua text
+          secondary: "#007C91", // teal midtone
+          "secondary-content": "#E0FFFF", // light aqua
+          accent: "#A7EFFF", // aqua accent
+          "accent-content": "#025259",
+          neutral: "#E0FFFF",
+          "neutral-content": "#009FB7",
+          "base-100": "#003B46", // deepest base
+          "base-200": "#025259",
+          "base-300": "#007C91",
+          "base-content": "#E0FFFF",
+          info: "#A7EFFF",
           success: "#34EEB6",
           warning: "#FFCF72",
           error: "#FF8863",
 
           "--rounded-btn": "9999rem",
-
           ".tooltip": {
             "--tooltip-tail": "6px",
             "--tooltip-color": "oklch(var(--p))",
