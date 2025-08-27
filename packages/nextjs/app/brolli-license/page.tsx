@@ -1,0 +1,146 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import type { NextPage } from "next";
+import { useAccount } from "wagmi";
+import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+
+interface LicenseFormState {
+  patentName: string;
+  imageUri: string;
+  provenanceCid: string;
+}
+
+const initialState: LicenseFormState = {
+  patentName: "",
+  imageUri: "https://tan-everyday-mite-419.mypinata.cloud/ipfs/bafkreiblkz5urallgl4ko6otrcgm2rrzf22n5coi5rqkmmokrhcilnadjy",
+  provenanceCid: "",
+};
+
+const BrolliLicensePage: NextPage = () => {
+  const { address: connectedAddress } = useAccount();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setForm] = useState<LicenseFormState>(initialState);
+
+  const [yourLicenses, setYourLicenses] = useState<any[]>();
+  const [loading, setLoading] = useState(true);
+
+  const { data: balance } = useScaffoldReadContract({
+    contractName: "BrolliLicenseSimple",
+    functionName: "balanceOf",
+    args: connectedAddress ? [connectedAddress] : undefined,
+    enabled: Boolean(connectedAddress),
+  } as any);
+
+  const { data: contract } = useScaffoldContract({ contractName: "BrolliLicenseSimple" });
+  const { writeContractAsync } = useScaffoldWriteContract("BrolliLicenseSimple");
+
+  function update<K extends keyof LicenseFormState>(key: K, value: LicenseFormState[K]) {
+    setForm(prev => ({ ...prev, [key]: value }));
+  }
+
+  useEffect(() => {
+    const load = async () => {
+      setLoading(true);
+      if (contract && balance && connectedAddress) {
+        const total = (balance as unknown as bigint) ?? 0n;
+        const items = [] as any[];
+        for (let tokenIndex = 0n; tokenIndex < total; tokenIndex++) {
+          try {
+            const tokenId = await contract.read.tokenOfOwnerByIndex([connectedAddress, tokenIndex]);
+            const tokenURI = await contract.read.tokenURI([tokenId]);
+            const jsonManifestString = atob(tokenURI.substring(29));
+            try {
+              const jsonManifest = JSON.parse(jsonManifestString);
+              items.push({ id: tokenId, uri: tokenURI, ...jsonManifest });
+            } catch (e) {
+              console.log(e);
+            }
+          } catch (e) {
+            console.log(e);
+          }
+        }
+        setYourLicenses(items);
+      } else {
+        setYourLicenses([]);
+      }
+      setLoading(false);
+    };
+    load();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [balance, connectedAddress, Boolean(contract)]);
+
+  async function handleMint() {
+    if (!contract || !connectedAddress) return;
+    setIsSubmitting(true);
+    try {
+      await writeContractAsync({
+        functionName: "mint",
+        args: [form.patentName, form.imageUri, form.provenanceCid],
+      });
+      setForm(initialState);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  function renderImage(src: string, alt: string) {
+    const isExternal = src.startsWith("http");
+    if (isExternal) return <img src={src} alt={alt} width={300} height={300} />;
+    return <Image src={src} alt={alt} width={300} height={300} />;
+  }
+
+  return (
+    <>
+      <div className="flex items-center flex-col flex-grow pt-10">
+        <div className="relative w-48 h-48 -m-12">
+          <Image alt="Brolli" className="cursor-pointer" fill src="/logo.svg" />
+        </div>
+        <div className="px-5">
+          <h1 className="text-center">
+            <span className="block text-4xl font-bold">Brolli Licenses</span>
+          </h1>
+          <div className="flex flex-col justify-center items-center mt-4 space-x-2 w-full max-w-2xl">
+            <div className="grid grid-cols-1 gap-3 w-full">
+              <input className="input input-bordered" placeholder="Patent Name" value={form.patentName} onChange={e => update("patentName", e.target.value)} />
+              <input className="input input-bordered" placeholder="Image URI (ipfs:// or https://)" value={form.imageUri} onChange={e => update("imageUri", e.target.value)} />
+              <input className="input input-bordered" placeholder="Patent NFT Contract Hash" value={form.provenanceCid} onChange={e => update("provenanceCid", e.target.value)} />
+            </div>
+            <button onClick={handleMint} className="btn btn-primary mt-3" disabled={!connectedAddress || isSubmitting}>
+              {isSubmitting ? "Minting..." : "Mint License"}
+            </button>
+          </div>
+        </div>
+
+        <div className="flex-grow bg-base-300 w-full mt-4 p-8">
+          <div className="flex justify-center items-center space-x-2">
+            {loading ? (
+              <p className="my-2 font-medium">Loading...</p>
+            ) : !yourLicenses?.length ? (
+              <p className="my-2 font-medium">No licenses minted</p>
+            ) : (
+              <div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
+                  {yourLicenses.map(license => {
+                    return (
+                      <div key={license.id} className="flex flex-col bg-base-100 p-5 text-center items-center max-w-xs rounded-3xl">
+                        <h2 className="text-xl font-bold">{license.name}</h2>
+                        {license.image && renderImage(license.image, license.name)}
+                        <p className="mt-2">{license.description}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default BrolliLicensePage; 
