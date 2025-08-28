@@ -20,6 +20,8 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable, ReentrancyGuard {
 
 	mapping(uint256 => Meta) public metadataByTokenId;
 	mapping(address => bool) public hasLicense; // Track if address already has a license
+	
+	uint256 public constant MAX_SUPPLY = 50; // Maximum number of licenses that can be issued
 
 	constructor() ERC721("Brolli License (Simple)", "BROLLI-S") {}
 
@@ -29,6 +31,7 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable, ReentrancyGuard {
 		string memory provenanceCid
 	) public nonReentrant returns (uint256) {
 		require(!hasLicense[msg.sender], "Address already has a license");
+		require(_tokenIds.current() < MAX_SUPPLY, "Maximum supply reached");
 		
 		// Set hasLicense BEFORE minting to prevent reentrancy exploits
 		hasLicense[msg.sender] = true;
@@ -39,6 +42,16 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable, ReentrancyGuard {
 		metadataByTokenId[tokenId] = Meta({ patentName: patentName, imageUri: imageUri, provenanceCid: provenanceCid });
 		
 		return tokenId;
+	}
+
+	// Get current supply and remaining licenses
+	function currentSupply() public view returns (uint256) {
+		return _tokenIds.current();
+	}
+
+	function remainingSupply() public view returns (uint256) {
+		uint256 current = _tokenIds.current();
+		return current >= MAX_SUPPLY ? 0 : MAX_SUPPLY - current;
 	}
 
 	function tokenURI(uint256 tokenId) public view override returns (string memory) {
