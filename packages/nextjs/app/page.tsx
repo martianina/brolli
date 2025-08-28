@@ -5,6 +5,7 @@ import Image from "next/image";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { LicenseViewer } from "~~/components/LicenseViewer";
 
 interface LicenseFormState {
   patentName: string;
@@ -12,10 +13,13 @@ interface LicenseFormState {
   provenanceCid: string;
 }
 
+// Dummy IPFS hash for license details (same as in LicenseViewer)
+const DUMMY_IPFS_HASH = "QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG";
+
 const initialState: LicenseFormState = {
-  patentName: "",
+  patentName: "Brolli Patent License for BUIDLers",
   imageUri: "https://tan-everyday-mite-419.mypinata.cloud/ipfs/bafkreiblkz5urallgl4ko6otrcgm2rrzf22n5coi5rqkmmokrhcilnadjy",
-  provenanceCid: "",
+  provenanceCid: DUMMY_IPFS_HASH,
 };
 
 const BrolliLicensePage: NextPage = () => {
@@ -29,6 +33,13 @@ const BrolliLicensePage: NextPage = () => {
   const { data: balance } = useScaffoldReadContract({
     contractName: "BrolliLicenseSimple",
     functionName: "balanceOf",
+    args: connectedAddress ? [connectedAddress] : undefined,
+    enabled: Boolean(connectedAddress),
+  } as any);
+
+  const { data: hasExistingLicense } = useScaffoldReadContract({
+    contractName: "BrolliLicenseSimple",
+    functionName: "hasLicense",
     args: connectedAddress ? [connectedAddress] : undefined,
     enabled: Boolean(connectedAddress),
   } as any);
@@ -155,24 +166,8 @@ const BrolliLicensePage: NextPage = () => {
             </div>
           </div>
 
-          {/* Right Container - PatentLicenseNFT Display */}
-          <div className="flex-1 bg-base-200 p-6 rounded-xl border-2 border-primary">
-            <h2 className="text-2xl font-bold text-center mb-4">Patent License Details</h2>
-            <div className="flex flex-col items-center space-y-4">
-              <div className="w-64 h-64 bg-base-300 rounded-lg border-2 border-base-400 flex items-center justify-center">
-                <div className="text-center p-4">
-                  <div className="text-6xl mb-2">📄</div>
-                  <div className="text-sm text-base-content/70">Patent License NFT</div>
-                  <div className="text-xs text-base-content/50 mt-2">
-                    Connect wallet to view details
-                  </div>
-                </div>
-              </div>
-              <p className="text-center text-sm text-base-content/70">
-                View detailed patent license information and terms
-              </p>
-            </div>
-          </div>
+          {/* Right Container - License Details Viewer */}
+          <LicenseViewer className="flex-1" />
         </div>
 
         
@@ -188,9 +183,23 @@ const BrolliLicensePage: NextPage = () => {
           </h1>
           <div className="flex flex-col justify-center items-center mt-4 space-x-2 w-full max-w-2xl">
             
-            <button onClick={handleMint} className="btn btn-primary mt-3" disabled={!connectedAddress || isSubmitting}>
-              {isSubmitting ? "Minting..." : "Mint License"}
+            <button 
+              onClick={handleMint} 
+              className="btn btn-primary mt-3" 
+              disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
+            >
+              {isSubmitting 
+                ? "Minting..." 
+                : Boolean(hasExistingLicense)
+                  ? "License Already Owned" 
+                  : "Mint License"
+              }
             </button>
+            {Boolean(hasExistingLicense) && (
+              <p className="text-sm text-warning mt-2 text-center">
+                You already own a Brolli license. Only one license per wallet is allowed.
+              </p>
+            )}
           </div>
         </div>
 

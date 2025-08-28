@@ -18,6 +18,7 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable {
 	}
 
 	mapping(uint256 => Meta) public metadataByTokenId;
+	mapping(address => bool) public hasLicense; // Track if address already has a license
 
 	constructor() ERC721("Brolli License (Simple)", "BROLLI-S") {}
 
@@ -26,10 +27,13 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable {
 		string memory imageUri,
 		string memory provenanceCid
 	) public returns (uint256) {
+		require(!hasLicense[msg.sender], "Address already has a license");
+		
 		_tokenIds.increment();
 		uint256 tokenId = _tokenIds.current();
 		_safeMint(msg.sender, tokenId);
 		metadataByTokenId[tokenId] = Meta({ patentName: patentName, imageUri: imageUri, provenanceCid: provenanceCid });
+		hasLicense[msg.sender] = true;
 		return tokenId;
 	}
 
@@ -56,5 +60,25 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable {
 				Base64.encode(json)
 			)
 		);
+	}
+
+	// Make the token non-transferable (soulbound)
+	function _beforeTokenTransfer(
+		address from,
+		address to,
+		uint256 tokenId,
+		uint256 batchSize
+	) internal override {
+		require(from == address(0) || to == address(0), "Token is non-transferable");
+		super._beforeTokenTransfer(from, to, tokenId, batchSize);
+	}
+
+	// Override approve functions to prevent approvals
+	function approve(address, uint256) public pure override(ERC721, IERC721) {
+		revert("Token is non-transferable");
+	}
+
+	function setApprovalForAll(address, bool) public pure override(ERC721, IERC721) {
+		revert("Token is non-transferable");
 	}
 } 
