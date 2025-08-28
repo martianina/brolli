@@ -1,0 +1,10 @@
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/serde_bytes-1913f07e91b61f7f.d: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/bytearray.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/bytes.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/de.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/ser.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/bytebuf.rs
+
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/libserde_bytes-1913f07e91b61f7f.rmeta: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/bytearray.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/bytes.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/de.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/ser.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/bytebuf.rs
+
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/lib.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/bytearray.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/bytes.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/de.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/ser.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde_bytes-0.11.17/src/bytebuf.rs:

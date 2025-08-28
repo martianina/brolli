@@ -1,0 +1,10 @@
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/spl_pod-18772628742038a8.d: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/bytemuck.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/error.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/optional_keys.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/primitives.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/slice.rs
+
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/libspl_pod-18772628742038a8.rmeta: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/bytemuck.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/error.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/optional_keys.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/primitives.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/slice.rs
+
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/lib.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/bytemuck.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/error.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/optional_keys.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/primitives.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-pod-0.1.0/src/slice.rs:

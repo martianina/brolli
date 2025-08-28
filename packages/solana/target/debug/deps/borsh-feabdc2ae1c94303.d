@@ -1,0 +1,11 @@
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/borsh-feabdc2ae1c94303.d: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/de/mod.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/de/hint.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/schema.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/schema_helpers.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/ser/mod.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/ser/helpers.rs
+
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/libborsh-feabdc2ae1c94303.rmeta: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/de/mod.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/de/hint.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/schema.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/schema_helpers.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/ser/mod.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/ser/helpers.rs
+
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/lib.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/de/mod.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/de/hint.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/schema.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/schema_helpers.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/ser/mod.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/borsh-0.9.3/src/ser/helpers.rs:

@@ -98,4 +98,9 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable, ReentrancyGuard {
 	function setApprovalForAll(address, bool) public pure override(ERC721, IERC721) {
 		revert("Token is non-transferable");
 	}
+
+	// Explicit supportsInterface override to silence compiler warnings
+	function supportsInterface(bytes4 interfaceId) public view override(ERC721Enumerable) returns (bool) {
+		return super.supportsInterface(interfaceId);
+	}
 } 

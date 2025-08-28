@@ -1,0 +1,8 @@
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/spl_token_metadata_interface-1bc77a432e033565.d: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/error.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/instruction.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/state.rs
+
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/libspl_token_metadata_interface-1bc77a432e033565.rmeta: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/error.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/instruction.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/state.rs
+
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/lib.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/error.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/instruction.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-token-metadata-interface-0.2.0/src/state.rs:

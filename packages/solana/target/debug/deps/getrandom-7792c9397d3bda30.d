@@ -1,0 +1,11 @@
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/getrandom-7792c9397d3bda30.d: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/error.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/util.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/error_impls.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/util_libc.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/use_file.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/macos.rs
+
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/libgetrandom-7792c9397d3bda30.rmeta: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/error.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/util.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/error_impls.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/util_libc.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/use_file.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/macos.rs
+
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/lib.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/error.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/util.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/error_impls.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/util_libc.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/use_file.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/getrandom-0.1.16/src/macos.rs:

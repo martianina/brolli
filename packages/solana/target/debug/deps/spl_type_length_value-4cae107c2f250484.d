@@ -1,0 +1,9 @@
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/spl_type_length_value-4cae107c2f250484.d: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/error.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/length.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/state.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/variable_len_pack.rs
+
+/Users/rp.kilbride/brolli/packages/solana/target/debug/deps/libspl_type_length_value-4cae107c2f250484.rmeta: /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/lib.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/error.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/length.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/state.rs /Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/variable_len_pack.rs
+
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/lib.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/error.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/length.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/state.rs:
+/Users/rp.kilbride/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/spl-type-length-value-0.3.0/src/variable_len_pack.rs:
