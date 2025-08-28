@@ -4,9 +4,10 @@ pragma solidity ^0.8.17;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "base64-sol/base64.sol";
 
-contract BrolliLicenseSimple is ERC721Enumerable, Ownable {
+contract BrolliLicenseSimple is ERC721Enumerable, Ownable, ReentrancyGuard {
 	using Counters for Counters.Counter;
 
 	Counters.Counter private _tokenIds;
@@ -26,14 +27,17 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable {
 		string memory patentName,
 		string memory imageUri,
 		string memory provenanceCid
-	) public returns (uint256) {
+	) public nonReentrant returns (uint256) {
 		require(!hasLicense[msg.sender], "Address already has a license");
+		
+		// Set hasLicense BEFORE minting to prevent reentrancy exploits
+		hasLicense[msg.sender] = true;
 		
 		_tokenIds.increment();
 		uint256 tokenId = _tokenIds.current();
 		_safeMint(msg.sender, tokenId);
 		metadataByTokenId[tokenId] = Meta({ patentName: patentName, imageUri: imageUri, provenanceCid: provenanceCid });
-		hasLicense[msg.sender] = true;
+		
 		return tokenId;
 	}
 
