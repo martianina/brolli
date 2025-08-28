@@ -26,32 +26,34 @@ pub mod brolli_license {
         image_uri: String,
         provenance_cid: String,
     ) -> Result<()> {
-        let license_state = &mut ctx.accounts.license_state;
-        
-        // Check supply limit
-        require!(
-            license_state.current_supply < license_state.max_supply,
-            LicenseError::MaximumSupplyReached
-        );
+        // Check supply limit and user eligibility first
+        {
+            let license_state = &ctx.accounts.license_state;
+            require!(
+                license_state.current_supply < license_state.max_supply,
+                LicenseError::MaximumSupplyReached
+            );
 
-        // Check if user already has a license (one per wallet)
-        require!(
-            !license_state.has_license.contains(&ctx.accounts.user.key()),
-            LicenseError::AlreadyHasLicense
-        );
+            require!(
+                !license_state.has_license.contains(&ctx.accounts.user.key()),
+                LicenseError::AlreadyHasLicense
+            );
+        }
 
-        // Add user to has_license list before minting (reentrancy protection)
-        license_state.has_license.push(ctx.accounts.user.key());
-        license_state.current_supply += 1;
+        // Now update state (get mutable reference)
+        let new_token_id = {
+            let license_state = &mut ctx.accounts.license_state;
+            license_state.has_license.push(ctx.accounts.user.key());
+            license_state.current_supply += 1;
+            license_state.current_supply
+        };
 
         // Mint the NFT
-        let supply_bytes = license_state.current_supply.to_le_bytes();
-        let mint_seeds = &[
-            b"mint".as_ref(),
-            supply_bytes.as_ref(),
-            &[ctx.bumps.mint]
+        let license_state_seeds = &[
+            b"license_state".as_ref(),
+            &[ctx.bumps.license_state]
         ];
-        let mint_signer = &[&mint_seeds[..]];
+        let license_state_signer = &[&license_state_seeds[..]];
 
         token::mint_to(
             CpiContext::new_with_signer(
@@ -59,9 +61,9 @@ pub mod brolli_license {
                 token::MintTo {
                     mint: ctx.accounts.mint.to_account_info(),
                     to: ctx.accounts.token_account.to_account_info(),
-                    authority: ctx.accounts.mint.to_account_info(),
+                    authority: ctx.accounts.license_state.to_account_info(),
                 },
-                mint_signer,
+                license_state_signer,
             ),
             1, // Amount: 1 NFT
         )?;
@@ -73,32 +75,21 @@ pub mod brolli_license {
         license_metadata.provenance_cid = provenance_cid.clone();
         license_metadata.owner = ctx.accounts.user.key();
         license_metadata.mint = ctx.accounts.mint.key();
-        license_metadata.token_id = license_state.current_supply;
+        license_metadata.token_id = new_token_id;
 
         emit!(LicenseMinted {
             user: ctx.accounts.user.key(),
             mint: ctx.accounts.mint.key(),
             patent_name,
             provenance_cid,
-            token_id: license_state.current_supply,
+            token_id: new_token_id,
         });
 
         Ok(())
     }
 
-    pub fn get_supply_info(ctx: Context<GetSupplyInfo>) -> Result<SupplyInfo> {
-        let license_state = &ctx.accounts.license_state;
-        Ok(SupplyInfo {
-            current_supply: license_state.current_supply,
-            max_supply: license_state.max_supply,
-            remaining_supply: license_state.max_supply - license_state.current_supply,
-        })
-    }
-
-    pub fn has_license(ctx: Context<HasLicense>, user: Pubkey) -> Result<bool> {
-        let license_state = &ctx.accounts.license_state;
-        Ok(license_state.has_license.contains(&user))
-    }
+    // Note: Supply info and license check are available by reading license_state account off-chain
+    // No need for special instructions - just fetch the account data directly
 }
 
 #[derive(Accounts)]
@@ -131,8 +122,8 @@ pub struct MintLicense<'info> {
         init,
         payer = user,
         mint::decimals = 0,
-        mint::authority = mint,
-        mint::freeze_authority = mint,
+        mint::authority = license_state,
+        mint::freeze_authority = license_state,
         seeds = [b"mint", (license_state.current_supply + 1).to_le_bytes().as_ref()],
         bump
     )]
@@ -164,23 +155,7 @@ pub struct MintLicense<'info> {
     pub associated_token_program: Program<'info, AssociatedToken>,
 }
 
-#[derive(Accounts)]
-pub struct GetSupplyInfo<'info> {
-    #[account(
-        seeds = [b"license_state"],
-        bump
-    )]
-    pub license_state: Account<'info, LicenseState>,
-}
-
-#[derive(Accounts)]
-pub struct HasLicense<'info> {
-    #[account(
-        seeds = [b"license_state"],
-        bump
-    )]
-    pub license_state: Account<'info, LicenseState>,
-}
+// Removed GetSupplyInfo and HasLicense - read license_state account directly off-chain
 
 #[account]
 pub struct LicenseState {
@@ -208,12 +183,7 @@ impl LicenseMetadata {
     pub const SPACE: usize = 4 + 100 + 4 + 200 + 4 + 100 + 32 + 32 + 8; // String lengths + Pubkeys + u64
 }
 
-#[derive(AnchorSerialize, AnchorDeserialize)]
-pub struct SupplyInfo {
-    pub current_supply: u64,
-    pub max_supply: u64,
-    pub remaining_supply: u64,
-}
+// Removed SupplyInfo struct - read license_state fields directly
 
 #[event]
 pub struct LicenseMinted {
