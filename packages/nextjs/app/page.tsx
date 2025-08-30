@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
-import { LicenseViewer } from "~~/components/LicenseViewer";
 
 interface LicenseFormState {
   patentName: string;
@@ -161,7 +161,7 @@ const BrolliLicensePage: NextPage = () => {
         <div className="flex flex-col lg:flex-row gap-8 justify-center items-start max-w-7xl mx-auto">
           {/* Left Container - Existing Minter */}
           <div className="flex-1 bg-base-200 p-6 rounded-xl border-2 border-primary">
-            <h2 className="text-2xl font-bold text-center mb-4">Patent License Minter</h2>
+            <h2 className="text-2xl font-bold text-center mb-4">Brolli NFT Minter</h2>
             <div className="flex flex-col items-center space-y-4">
               <Image
                 src="/patent-name.png"
@@ -183,8 +183,30 @@ const BrolliLicensePage: NextPage = () => {
             </div>
           </div>
 
-          {/* Right Container - License Details Viewer */}
-          <LicenseViewer className="flex-1" />
+          {/* Right Container - NFT Actions */}
+          <div className="flex-1 bg-base-100 p-6 rounded-xl border-2 border-primary flex flex-col items-center justify-center gap-4">
+            <Link href="/details" className="btn btn-primary btn-lg">
+              View NFT Details
+            </Link>
+
+            <button
+              onClick={handleMint}
+              className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold py-3 px-6 rounded-lg text-lg shadow-md transform hover:scale-105 transition-all duration-200"
+              disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
+            >
+              {isSubmitting
+                ? "Minting..."
+                : Boolean(hasExistingLicense)
+                  ? "NFT Already Owned"
+                  : "Mint NFT"
+              }
+            </button>
+            {Boolean(hasExistingLicense) && (
+              <p className="text-sm text-warning text-center">
+                You already own a Brolli NFT!
+              </p>
+            )}
+          </div>
         </div>
 
 
@@ -194,29 +216,7 @@ const BrolliLicensePage: NextPage = () => {
       <div className="flex items-center flex-col flex-grow pt-10">
 
         <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-4xl font-bold">Brolli Licenses</span>
-          </h1>
-          <div className="flex flex-col justify-center items-center mt-4 space-x-2 w-full max-w-2xl">
 
-            <button
-              onClick={handleMint}
-              className="btn btn-primary mt-3"
-              disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
-            >
-              {isSubmitting
-                ? "Minting..."
-                : Boolean(hasExistingLicense)
-                  ? "License Already Owned"
-                  : "Mint License"
-              }
-            </button>
-            {Boolean(hasExistingLicense) && (
-              <p className="text-sm text-warning mt-2 text-center">
-                You already own a Brolli license. Only one license per wallet is allowed.
-              </p>
-            )}
-          </div>
         </div>
 
         <div className="flex-grow bg-base-300 w-full mt-4 p-8">
@@ -224,7 +224,7 @@ const BrolliLicensePage: NextPage = () => {
             {loading ? (
               <p className="my-2 font-medium">Loading...</p>
             ) : !yourLicenses?.length ? (
-              <p className="my-2 font-medium">No licenses minted</p>
+              <p className="my-2 font-medium">Mint Your Brolli NFT</p>
             ) : (
               <div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
