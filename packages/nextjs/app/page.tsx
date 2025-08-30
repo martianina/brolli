@@ -106,23 +106,23 @@ const BrolliLicensePage: NextPage = () => {
 
   return (
     <>
-        {/* Hero Section with Video Background and Logo Overlay */}
+    {/* Hero Section with Video Background and Logo Overlay */}
     <div className="relative h-[110vh] w-full overflow-hidden">
       {/* Background Video */}
-      <video
-        autoPlay
-        loop
-        muted
+      <video 
+        autoPlay 
+        loop 
+        muted 
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover object-top"
       >
         <source src="/background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-
+      
       {/* Dark Overlay for better text readability */}
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40" />
-
+      
       {/* Logo Overlay */}
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
         <div className="text-center z-10">
@@ -188,14 +188,14 @@ const BrolliLicensePage: NextPage = () => {
             <Link href="/details" className="btn btn-primary btn-lg">
               View NFT Details
             </Link>
-
-            <button
-              onClick={handleMint}
+            
+            <button 
+              onClick={handleMint} 
               className="bg-[#7C3AED] hover:bg-[#6D28D9] text-white font-bold py-3 px-6 rounded-lg text-lg shadow-md transform hover:scale-105 transition-all duration-200"
               disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
             >
-              {isSubmitting
-                ? "Minting..."
+              {isSubmitting 
+                ? "Minting..." 
                 : Boolean(hasExistingLicense)
                   ? "NFT Already Owned"
                   : "Mint NFT"
@@ -400,24 +400,21 @@ const BrolliLicensePage: NextPage = () => {
 
       </div>
     </div>
-      <div className="flex items-center flex-col flex-grow pt-10">
-
-        <div className="px-5">
-
-        </div>
-
-        <div className="flex-grow bg-base-300 w-full mt-4 p-8">
-          <div className="flex justify-center items-center space-x-2">
+      <div className="flex items-center justify-center min-h-screen w-full py-10">
+        <div className="w-full max-w-7xl px-5">
+          <div className="bg-base-300 w-full p-8 rounded-3xl">
+            <div className="text-center">
             {loading ? (
               <p className="my-2 font-medium">Loading...</p>
             ) : !yourLicenses?.length ? (
-              <p className="my-2 font-medium">Mint Your Brolli NFT</p>
+                <p className="my-2 font-medium">Mint Your Brolli NFT</p>
             ) : (
               <div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-center">
+                  <h3 className="text-2xl font-bold mb-6 text-secondary">Your Brolli NFTs</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 place-items-center">
                   {yourLicenses.map(license => {
                     return (
-                      <div key={license.id} className="flex flex-col bg-base-100 p-5 text-center items-center max-w-xs rounded-3xl">
+                        <div key={license.id} className="flex flex-col bg-base-100 p-5 text-center items-center max-w-xs rounded-3xl shadow-lg border border-neutral">
                         <h2 className="text-xl font-bold">{license.name}</h2>
                         {license.image && renderImage(license.image, license.name)}
                         <p className="mt-2">{license.description}</p>
@@ -427,6 +424,7 @@ const BrolliLicensePage: NextPage = () => {
                 </div>
               </div>
             )}
+            </div>
           </div>
         </div>
       </div>
@@ -434,4 +432,4 @@ const BrolliLicensePage: NextPage = () => {
   );
 };
 
-export default BrolliLicensePage;
+export default BrolliLicensePage; 
