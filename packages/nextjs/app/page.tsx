@@ -208,46 +208,164 @@ const BrolliLicensePage: NextPage = () => {
             )}
           </div>
         </div>
-{/* After Hero + Minter Section */}
+      </div>
+    </div>
 
-<div className="w-full max-w-6xl mx-auto mb-16 pt-10 text-center">
-  <p className="text-xl text-base-content/80 max-w-3xl mx-auto mb-6">
-    Over 10,000 blockchain patents have been issued in the U.S. Most are held by banks, tech giants, and consultancies. 
-  </p>
-<p className="text-xl text-base-content/80 max-w-3xl mx-auto mb-6">
-    Their targets? Successful BUILDers 
-  </p>
+    {/* Enhanced Content Section After Minter */}
+    <div className="flex items-center flex-col flex-grow pt-16">
+      <div className="px-6 max-w-6xl mx-auto">
+        {/* Main Value Proposition */}
+        <div className="text-center mb-12">
+          
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+            The IP Minefield for BUIDLers
+          </h2>
+        </div>
 
-  <p className="text-lg text-base-content/70 mb-6">
-    Patent trolls wait until projects gain traction, then strike. Startups, DAOs, and open-science initiatives are especially exposed.
-  </p>
+        {/* Key Statistics */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-base-100 p-6 rounded-2xl shadow-lg border border-base-300 text-center">
+            <div className="text-4xl font-bold text-primary mb-2">10,000+</div>
+            <div className="text-sm text-base-content/70 uppercase tracking-wide">Blockchain Patents</div>
+            <div className="text-xs text-base-content/50 mt-1">Issued in the U.S.</div>
+          </div>
+          <div className="bg-base-100 p-6 rounded-2xl shadow-lg border border-base-300 text-center">
+            <div className="text-4xl font-bold text-secondary mb-2">85%</div>
+            <div className="text-sm text-base-content/70 uppercase tracking-wide">Held by Enterprises</div>
+            <div className="text-xs text-base-content/50 mt-1">Banks & Tech Giants</div>
+          </div>
+          <div className="bg-base-100 p-6 rounded-2xl shadow-lg border border-base-300 text-center">
+            <div className="text-4xl font-bold text-accent mb-2">⚠️ WARNING</div>
+            <div className="text-sm text-base-content/70 uppercase tracking-wide">Waiting to Strike</div>
+            <div className="text-xs text-base-content/50 mt-1">Patent Trolls Target Success</div>
+          </div>
+        </div>
 
-  <p className="text-base text-base-content/60 mb-6">
-    Brolli provides an on-chain umbrella license for broad, real-world asset web3 systems, giving builders collective clarity and protection. You focus on building — trolls stay out.
-  </p>
+        {/* The Problem */}
+        <div className="bg-gradient-to-br from-base-100 to-base-200 p-8 rounded-3xl shadow-xl border border-base-300 mb-12">
+          
 
-  <p className="text-lg text-base-content/70 mb-6">
-    Builders get freedom. Enterprises get a clear path to license. The ecosystem grows without litigation drag.
-  </p>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="text-red-500 text-xl mt-1 font-bold">•</div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-1">Patent Trolls Wait</h4>
+                  <p className="text-base-content/70">They monitor successful projects and strike when you're most vulnerable.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-orange-500 text-xl mt-1 font-bold">•</div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-1">Enterprise Dominance</h4>
+                  <p className="text-base-content/70">Banks, consultancies, and tech giants hold most blockchain patents.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <div className="text-blue-500 text-xl mt-1 font-bold">•</div>
+                <div>
+                  <h4 className="font-semibold text-lg mb-1">Targets: BUILDers</h4>
+                  <p className="text-base-content/70">Startups, DAOs, and open-science projects are prime targets.</p>
+                </div>
+              </div>
+            </div>
 
-  <button
-    onClick={handleMint}
-    className="btn btn-primary btn-lg px-16 py-6 text-2xl font-bold"
-    style={{
-      backgroundColor: '#7C3AED',
-      borderColor: '#7C3AED',
-      color: 'white'
-    }}
-    disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
-  >
-    {isSubmitting
-      ? "Minting..."
-      : Boolean(hasExistingLicense)
-        ? "License Already Owned"
-        : "Get Brolli - Free Mint"
-    }
-  </button>
-</div>
+            <div className="text-center">
+              <Image
+                src="/Brolli.png"
+                width="180"
+                height="180"
+                alt="Brolli Logo"
+                className="mx-auto mb-6 rounded-lg shadow-lg"
+              />
+              <div className="text-3xl font-bold mb-4 text-primary">PROTECTION</div>
+              <p className="text-lg font-semibold">Brolli Provides Cover</p>
+              <p className="text-sm text-base-content/60">Collective protection for the ecosystem</p>
+            </div>
+          </div>
+        </div>
+
+        {/* The Solution */}
+        <div className="bg-gradient-to-r from-primary/5 to-secondary/5 p-8 rounded-3xl border border-primary/20 mb-12">
+          <div className="text-center mb-8">
+            <h3 className="text-3xl font-bold mb-4">code+law</h3>
+            <p className="text-lg text-base-content/80 max-w-2xl mx-auto">
+              NFT license framework anchored on-chain, providing broad protection for real-world asset web3 systems.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-black p-6 rounded-2xl text-center shadow-lg border border-neutral">
+              <div className="text-3xl font-bold mb-4 text-secondary">PROVENANCE</div>
+
+              <p className="text-sm text-base-content">Legal affidavit notarized and stored on-chain for maximum credibility.</p>
+            </div>
+            <div className="bg-black p-6 rounded-2xl text-center shadow-lg border border-neutral">
+              <div className="text-3xl font-bold mb-4 text-secondary">PROOF</div>
+
+              <p className="text-sm text-base-content">Portable proof of coverage that travels with your project.</p>
+            </div>
+            <div className="bg-black p-6 rounded-2xl text-center shadow-lg border border-neutral">
+              <div className="text-3xl font-bold mb-4 text-secondary">VALIDATION</div>
+
+              <p className="text-sm text-base-content">Complete evidence bundle ready for verification and disputes.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Brolli Hero Logo - Centered between container rows */}
+        <div className="text-center my-12">
+          <Image
+            src="/hero.png"
+            width="250"
+            height="250"
+            alt="Brolli Logo"
+            className="mx-auto rounded-lg shadow-lg"
+          />
+        </div>
+
+        {/* Value Proposition */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
+            <div className="text-3xl mb-3 font-bold text-secondary">BUILD</div>
+            <h4 className="font-bold text-lg mb-2 text-secondary">For Builders</h4>
+            <p className="text-sm text-secondary">Freedom to innovate without patent fear. Focus on building, not litigation.</p>
+          </div>
+          <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
+            <div className="text-3xl mb-3 font-bold text-secondary">ENTERPRISE</div>
+            <h4 className="font-bold text-lg mb-2 text-secondary">For Enterprises</h4>
+            <p className="text-sm text-secondary">Clear licensing path for web3 adoption and ecosystem growth.</p>
+          </div>
+          <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
+            <div className="text-3xl mb-3 font-bold text-secondary">ECOSYSTEM</div>
+            <h4 className="font-bold text-lg mb-2 text-secondary">For Ecosystem</h4>
+            <p className="text-sm text-secondary">Growth without litigation drag. Collective protection benefits all.</p>
+          </div>
+        </div>
+
+        {/* Duplicated FREE MINT Button */}
+        <div className="text-center my-8">
+          <button
+            onClick={handleMint}
+            className="btn px-8 py-3 text-lg font-semibold"
+            style={{
+              backgroundColor: '#6A5ACD',
+              borderColor: '#6A5ACD',
+              color: 'white'
+            }}
+            disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
+          >
+            {isSubmitting
+              ? "Minting..."
+              : Boolean(hasExistingLicense)
+                ? "License Already Owned"
+                : "FREE MINT"
+            }
+          </button>
+        </div>
+
+        {/* Call to Action */}
+        
 
 
       </div>
