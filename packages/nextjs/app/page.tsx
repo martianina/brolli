@@ -296,17 +296,32 @@ const BrolliLicensePage: NextPage = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-black p-6 rounded-2xl text-center shadow-lg border border-neutral">
-              <div className="text-3xl font-bold mb-4 text-secondary">PROVENANCE</div>
+              <div className="flex flex-col items-center mb-4">
+                <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <div className="text-3xl font-bold text-secondary">PROVENANCE</div>
+              </div>
 
               <p className="text-sm text-base-content">Legal affidavit notarized and stored on-chain for maximum credibility.</p>
             </div>
             <div className="bg-black p-6 rounded-2xl text-center shadow-lg border border-neutral">
-              <div className="text-3xl font-bold mb-4 text-secondary">PROOF</div>
+              <div className="flex flex-col items-center mb-4">
+                <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+                <div className="text-3xl font-bold text-secondary">PROOF</div>
+              </div>
 
               <p className="text-sm text-base-content">Portable proof of coverage that travels with your project.</p>
             </div>
             <div className="bg-black p-6 rounded-2xl text-center shadow-lg border border-neutral">
-              <div className="text-3xl font-bold mb-4 text-secondary">VALIDATION</div>
+              <div className="flex flex-col items-center mb-4">
+                <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
+                </svg>
+                <div className="text-3xl font-bold text-secondary">VALIDATION</div>
+              </div>
 
               <p className="text-sm text-base-content">Complete evidence bundle ready for verification and disputes.</p>
             </div>
@@ -327,19 +342,34 @@ const BrolliLicensePage: NextPage = () => {
         {/* Value Proposition */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
-            <div className="text-3xl mb-3 font-bold text-secondary">BUILD</div>
-            <h4 className="font-bold text-lg mb-2 text-secondary">For Builders</h4>
-            <p className="text-sm text-secondary">Freedom to innovate without patent fear. Focus on building, not litigation.</p>
+            <div className="flex flex-col items-center mb-4">
+              <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <div className="text-3xl mb-3 font-bold text-secondary">BUILDers</div>
+            </div>
+
+            <p className="text-sm text-secondary">Focus on innovation, not IP trolls.</p>
           </div>
-          <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
-            <div className="text-3xl mb-3 font-bold text-secondary">ENTERPRISE</div>
-            <h4 className="font-bold text-lg mb-2 text-secondary">For Enterprises</h4>
+                    <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
+            <div className="flex flex-col items-center mb-4">
+              <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              <div className="text-3xl mb-3 font-bold text-secondary">ENTERPRISE</div>
+            </div>
+
             <p className="text-sm text-secondary">Clear licensing path for web3 adoption and ecosystem growth.</p>
           </div>
           <div className="bg-black p-6 rounded-2xl text-center border border-neutral">
-            <div className="text-3xl mb-3 font-bold text-secondary">ECOSYSTEM</div>
-            <h4 className="font-bold text-lg mb-2 text-secondary">For Ecosystem</h4>
-            <p className="text-sm text-secondary">Growth without litigation drag. Collective protection benefits all.</p>
+            <div className="flex flex-col items-center mb-4">
+              <svg className="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div className="text-3xl mb-3 font-bold text-secondary">ECOSYSTEM</div>
+            </div>
+
+            <p className="text-sm text-secondary">Expand regulated use cases. Collective protection benefits all.</p>
           </div>
         </div>
 
