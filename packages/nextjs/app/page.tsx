@@ -208,7 +208,46 @@ const BrolliLicensePage: NextPage = () => {
             )}
           </div>
         </div>
+{/* After Hero + Minter Section */}
 
+<div className="w-full max-w-6xl mx-auto mb-16 pt-10 text-center">
+  <p className="text-xl text-base-content/80 max-w-3xl mx-auto mb-6">
+    Over 10,000 blockchain patents have been issued in the U.S. Most are held by banks, tech giants, and consultancies. 
+  </p>
+<p className="text-xl text-base-content/80 max-w-3xl mx-auto mb-6">
+    Their targets? Successful BUILDers 
+  </p>
+
+  <p className="text-lg text-base-content/70 mb-6">
+    Patent trolls wait until projects gain traction, then strike. Startups, DAOs, and open-science initiatives are especially exposed.
+  </p>
+
+  <p className="text-base text-base-content/60 mb-6">
+    Brolli provides an on-chain umbrella license for broad, real-world asset web3 systems, giving builders collective clarity and protection. You focus on building — trolls stay out.
+  </p>
+
+  <p className="text-lg text-base-content/70 mb-6">
+    Builders get freedom. Enterprises get a clear path to license. The ecosystem grows without litigation drag.
+  </p>
+
+  <button
+    onClick={handleMint}
+    className="btn btn-primary btn-lg px-16 py-6 text-2xl font-bold"
+    style={{
+      backgroundColor: '#7C3AED',
+      borderColor: '#7C3AED',
+      color: 'white'
+    }}
+    disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
+  >
+    {isSubmitting
+      ? "Minting..."
+      : Boolean(hasExistingLicense)
+        ? "License Already Owned"
+        : "Get Brolli - Free Mint"
+    }
+  </button>
+</div>
 
 
       </div>
