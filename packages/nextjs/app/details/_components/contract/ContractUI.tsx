@@ -2,11 +2,13 @@
 
 // @refresh reset
 import { useReducer } from "react";
+import Image from "next/image";
 import { ContractVariables } from "./ContractVariables";
 import { Address, Balance } from "~~/components/scaffold-eth";
 import { useDeployedContractInfo, useNetworkColor } from "~~/hooks/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { ContractName } from "~~/utils/scaffold-eth/contract";
+import { LicenseViewer } from "~~/components/LicenseViewer";
 
 type ContractUIProps = {
   contractName: ContractName;
@@ -67,25 +69,30 @@ export const ContractUI = ({ contractName, className = "" }: ContractUIProps) =>
             />
           </div>
         </div>
-        {/* Right Container - Patent License Details */}
-        <div className="col-span-1 lg:col-span-2 flex flex-col">
+        {/* Right Container - Patent Images and License Viewer */}
+        <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
+          {/* Top: Patent License Minter Images (no text) */}
           <div className="bg-base-200 p-6 rounded-xl border-2 border-primary">
-            <h2 className="text-2xl font-bold text-center mb-4">Patent License Details</h2>
             <div className="flex flex-col items-center space-y-4">
-              <div className="w-64 h-64 bg-base-300 rounded-lg border-2 border-base-400 flex items-center justify-center">
-                <div className="text-center p-4">
-                  <div className="text-6xl mb-2">📄</div>
-                  <div className="text-sm text-base-content/70">Patent License NFT</div>
-                  <div className="text-xs text-base-content/50 mt-2">
-                    View contract details and terms
-                  </div>
-                </div>
-              </div>
-              <p className="text-center text-sm text-base-content/70">
-                View detailed patent license information and terms
-              </p>
+              <Image
+                src="/patent-name.png"
+                width="300"
+                height="300"
+                alt="Patent Name"
+                className="rounded-lg border-2 border-base-300"
+              />
+              <Image
+                src="/patent-abstract.png"
+                width="300"
+                height="200"
+                alt="Patent Abstract"
+                className="rounded-lg border-2 border-base-300"
+              />
             </div>
           </div>
+
+          {/* Bottom: License Viewer */}
+          <LicenseViewer />
         </div>
       </div>
     </div>
