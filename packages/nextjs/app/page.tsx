@@ -106,23 +106,23 @@ const BrolliLicensePage: NextPage = () => {
 
   return (
     <>
-    {/* Hero Section with Video Background and Logo Overlay */}
-    <div className="relative h-[70vh] w-full overflow-hidden">
+        {/* Hero Section with Video Background and Logo Overlay */}
+    <div className="relative h-[110vh] w-full overflow-hidden">
       {/* Background Video */}
-      <video 
-        autoPlay 
-        loop 
-        muted 
+      <video
+        autoPlay
+        loop
+        muted
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover object-top"
       >
         <source src="/background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      
+
       {/* Dark Overlay for better text readability */}
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-40" />
-      
+
       {/* Logo Overlay */}
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
         <div className="text-center z-10">
@@ -131,10 +131,27 @@ const BrolliLicensePage: NextPage = () => {
               alt="Brolli for BUIDLers"
               width={1200}
               height={1200}
-              className="mx-auto mb-4 drop-shadow-2xl"
+              className="mx-auto -mb-2 drop-shadow-2xl"
             />
-      
-         
+
+            {/* CTA Button */}
+            <button
+              onClick={handleMint}
+              className="btn px-8 py-3 text-lg font-semibold"
+              style={{
+                backgroundColor: '#6A5ACD',
+                borderColor: '#6A5ACD',
+                color: 'white'
+              }}
+              disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
+            >
+              {isSubmitting
+                ? "Minting..."
+                : Boolean(hasExistingLicense)
+                  ? "License Already Owned"
+                  : "FREE MINT"
+              }
+            </button>
         </div>
       </div>
     </div>
@@ -170,28 +187,27 @@ const BrolliLicensePage: NextPage = () => {
           <LicenseViewer className="flex-1" />
         </div>
 
-        
 
-        
+
       </div>
     </div>
       <div className="flex items-center flex-col flex-grow pt-10">
-        
+
         <div className="px-5">
           <h1 className="text-center">
             <span className="block text-4xl font-bold">Brolli Licenses</span>
           </h1>
           <div className="flex flex-col justify-center items-center mt-4 space-x-2 w-full max-w-2xl">
-            
-            <button 
-              onClick={handleMint} 
-              className="btn btn-primary mt-3" 
+
+            <button
+              onClick={handleMint}
+              className="btn btn-primary mt-3"
               disabled={!connectedAddress || isSubmitting || Boolean(hasExistingLicense)}
             >
-              {isSubmitting 
-                ? "Minting..." 
+              {isSubmitting
+                ? "Minting..."
                 : Boolean(hasExistingLicense)
-                  ? "License Already Owned" 
+                  ? "License Already Owned"
                   : "Mint License"
               }
             </button>
@@ -231,4 +247,4 @@ const BrolliLicensePage: NextPage = () => {
   );
 };
 
-export default BrolliLicensePage; 
+export default BrolliLicensePage;
