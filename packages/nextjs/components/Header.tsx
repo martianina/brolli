@@ -36,11 +36,27 @@ export const HeaderMenuLinks = () => {
             <Link
               href={href}
               passHref
-              className={`${
-                isActive ? "bg-base-300 shadow-md" : ""
-              } hover:bg-secondary hover:shadow-md focus:!bg-base-300 active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+              className={`py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col shadow-md hover:shadow-lg transition-all duration-200`}
+              style={{
+                backgroundColor: isActive ? 'transparent' : '#6A5ACD',
+                borderColor: '#6A5ACD',
+                border: '1px solid #6A5ACD',
+                color: isActive ? '#6A5ACD' : 'white'
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                  e.currentTarget.style.color = '#6A5ACD';
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive) {
+                  e.currentTarget.style.backgroundColor = '#6A5ACD';
+                  e.currentTarget.style.color = 'white';
+                }
+              }}
             >
-             
+
               <span>{label}</span>
             </Link>
           </li>
