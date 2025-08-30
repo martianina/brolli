@@ -2,9 +2,7 @@
 
 // @refresh reset
 import { useReducer } from "react";
-import { ContractReadMethods } from "./ContractReadMethods";
 import { ContractVariables } from "./ContractVariables";
-import { ContractWriteMethods } from "./ContractWriteMethods";
 import { Address, Balance } from "~~/components/scaffold-eth";
 import { useDeployedContractInfo, useNetworkColor } from "~~/hooks/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
@@ -69,32 +67,23 @@ export const ContractUI = ({ contractName, className = "" }: ContractUIProps) =>
             />
           </div>
         </div>
-        <div className="col-span-1 lg:col-span-2 flex flex-col gap-6">
-          <div className="z-10">
-            <div className="bg-base-100 rounded-3xl shadow-md shadow-secondary border border-base-300 flex flex-col mt-10 relative">
-              <div className="h-[5rem] w-[5.5rem] bg-base-300 absolute self-start rounded-[22px] -top-[38px] -left-[1px] -z-10 py-[0.65rem] shadow-lg shadow-base-300">
-                <div className="flex items-center justify-center space-x-2">
-                  <p className="my-0 text-sm">Read</p>
+        {/* Right Container - Patent License Details */}
+        <div className="col-span-1 lg:col-span-2 flex flex-col">
+          <div className="bg-base-200 p-6 rounded-xl border-2 border-primary">
+            <h2 className="text-2xl font-bold text-center mb-4">Patent License Details</h2>
+            <div className="flex flex-col items-center space-y-4">
+              <div className="w-64 h-64 bg-base-300 rounded-lg border-2 border-base-400 flex items-center justify-center">
+                <div className="text-center p-4">
+                  <div className="text-6xl mb-2">📄</div>
+                  <div className="text-sm text-base-content/70">Patent License NFT</div>
+                  <div className="text-xs text-base-content/50 mt-2">
+                    View contract details and terms
+                  </div>
                 </div>
               </div>
-              <div className="p-5 divide-y divide-base-300">
-                <ContractReadMethods deployedContractData={deployedContractData} />
-              </div>
-            </div>
-          </div>
-          <div className="z-10">
-            <div className="bg-base-100 rounded-3xl shadow-md shadow-secondary border border-base-300 flex flex-col mt-10 relative">
-              <div className="h-[5rem] w-[5.5rem] bg-base-300 absolute self-start rounded-[22px] -top-[38px] -left-[1px] -z-10 py-[0.65rem] shadow-lg shadow-base-300">
-                <div className="flex items-center justify-center space-x-2">
-                  <p className="my-0 text-sm">Write</p>
-                </div>
-              </div>
-              <div className="p-5 divide-y divide-base-300">
-                <ContractWriteMethods
-                  deployedContractData={deployedContractData}
-                  onChange={triggerRefreshDisplayVariables}
-                />
-              </div>
+              <p className="text-center text-sm text-base-content/70">
+                View detailed patent license information and terms
+              </p>
             </div>
           </div>
         </div>
