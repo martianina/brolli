@@ -13,13 +13,13 @@ interface LicenseFormState {
   provenanceCid: string;
 }
 
-// IPFS hash for license details (same as in LicenseViewer)
-const IPFS_HASH = "QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG";
+// IPFS link for license details (full URL, not just hash)
+const PROVENANCE_LINK = "https://tan-everyday-mite-419.mypinata.cloud/ipfs/bafkreidc7qbkdsfirbetsu5owm56oeqkhwhqlxpfgjio4qy3xexigod2nq";
 
 const initialState: LicenseFormState = {
   name: "",
   imageUri: "https://tan-everyday-mite-419.mypinata.cloud/ipfs/bafkreialme2ca3b36nzq5rqqdqaw3k2le4uvgrdxtdj33t2j4sn44amisi",
-  provenanceCid: IPFS_HASH,
+  provenanceCid: PROVENANCE_LINK,
 };
 
 const BrolliLicensePage: NextPage = () => {
@@ -418,6 +418,20 @@ const BrolliLicensePage: NextPage = () => {
                         <h2 className="text-xl font-bold">{license.name}</h2>
                         {license.image && renderImage(license.image, license.name)}
                         <p className="mt-2 text-sm">{license.description}</p>
+
+                        {/* Provenance Link */}
+                        {license.resources?.provenance && (
+                          <div className="mt-2">
+                            <a
+                              href={license.resources.provenance}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="btn btn-xs btn-outline btn-secondary"
+                            >
+                              View Provenance
+                            </a>
+                          </div>
+                        )}
 
                         {/* Block Explorer Links */}
                         <div className="mt-4 w-full">
