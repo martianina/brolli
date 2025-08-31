@@ -436,12 +436,12 @@ const BrolliLicensePage: NextPage = () => {
                         {/* Block Explorer Links */}
                         <div className="mt-4 w-full">
                           <a
-                            href={`/blockexplorer/address/${contract?.address}`}
+                            href={`https://sepolia.etherscan.io/address/${contract?.address}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="btn btn-xs btn-outline btn-primary"
                           >
-                            View Contract
+                            View on Etherscan
                           </a>
                         </div>
                       </div>
