@@ -6,8 +6,8 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
   31337: {
-    BrolliLicenseSimple: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    Brolli: {
+      address: "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
       abi: [
         {
           inputs: [],
@@ -62,6 +62,32 @@ const deployedContracts = {
             },
           ],
           name: "ApprovalForAll",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "string",
+              name: "newImageUri",
+              type: "string",
+            },
+          ],
+          name: "DefaultImageUriUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "string",
+              name: "newProvenanceCid",
+              type: "string",
+            },
+          ],
+          name: "DefaultProvenanceCidUpdated",
           type: "event",
         },
         {
@@ -172,6 +198,32 @@ const deployedContracts = {
           type: "function",
         },
         {
+          inputs: [],
+          name: "defaultImageUri",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "defaultProvenanceCid",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
           inputs: [
             {
               internalType: "uint256",
@@ -245,7 +297,7 @@ const deployedContracts = {
           outputs: [
             {
               internalType: "string",
-              name: "patentName",
+              name: "name",
               type: "string",
             },
             {
@@ -266,7 +318,7 @@ const deployedContracts = {
           inputs: [
             {
               internalType: "string",
-              name: "patentName",
+              name: "name",
               type: "string",
             },
             {
@@ -564,6 +616,32 @@ const deployedContracts = {
             },
           ],
           name: "transferOwnership",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "newImageUri",
+              type: "string",
+            },
+          ],
+          name: "updateDefaultImageUri",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
+              name: "newProvenanceCid",
+              type: "string",
+            },
+          ],
+          name: "updateDefaultProvenanceCid",
           outputs: [],
           stateMutability: "nonpayable",
           type: "function",

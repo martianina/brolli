@@ -8,18 +8,18 @@ import { useAccount } from "wagmi";
 import { useScaffoldContract, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
 interface LicenseFormState {
-  patentName: string;
+  name: string;
   imageUri: string;
   provenanceCid: string;
 }
 
-// Dummy IPFS hash for license details (same as in LicenseViewer)
-const DUMMY_IPFS_HASH = "QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG";
+// IPFS hash for license details (same as in LicenseViewer)
+const IPFS_HASH = "QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG";
 
 const initialState: LicenseFormState = {
-  patentName: "Brolli Patent License for BUIDLers",
-  imageUri: "https://tan-everyday-mite-419.mypinata.cloud/ipfs/bafkreiblkz5urallgl4ko6otrcgm2rrzf22n5coi5rqkmmokrhcilnadjy",
-  provenanceCid: DUMMY_IPFS_HASH,
+  name: "",
+  imageUri: "https://tan-everyday-mite-419.mypinata.cloud/ipfs/bafkreialme2ca3b36nzq5rqqdqaw3k2le4uvgrdxtdj33t2j4sn44amisi",
+  provenanceCid: IPFS_HASH,
 };
 
 const BrolliLicensePage: NextPage = () => {
@@ -31,21 +31,21 @@ const BrolliLicensePage: NextPage = () => {
   const [loading, setLoading] = useState(true);
 
   const { data: balance } = useScaffoldReadContract({
-    contractName: "BrolliLicenseSimple",
+    contractName: "Brolli",
     functionName: "balanceOf",
     args: connectedAddress ? [connectedAddress] : undefined,
     enabled: Boolean(connectedAddress),
   } as any);
 
   const { data: hasExistingLicense } = useScaffoldReadContract({
-    contractName: "BrolliLicenseSimple",
+    contractName: "Brolli",
     functionName: "hasLicense",
     args: connectedAddress ? [connectedAddress] : undefined,
     enabled: Boolean(connectedAddress),
   } as any);
 
-  const { data: contract } = useScaffoldContract({ contractName: "BrolliLicenseSimple" });
-  const { writeContractAsync } = useScaffoldWriteContract("BrolliLicenseSimple");
+  const { data: contract } = useScaffoldContract({ contractName: "Brolli" });
+  const { writeContractAsync } = useScaffoldWriteContract("Brolli");
 
   function update<K extends keyof LicenseFormState>(key: K, value: LicenseFormState[K]) {
     setForm(prev => ({ ...prev, [key]: value }));
@@ -88,7 +88,7 @@ const BrolliLicensePage: NextPage = () => {
     try {
       await writeContractAsync({
         functionName: "mint",
-        args: [form.patentName, form.imageUri, form.provenanceCid],
+        args: [form.name, form.imageUri, form.provenanceCid],
       });
       setForm(initialState);
     } catch (e) {
@@ -148,7 +148,7 @@ const BrolliLicensePage: NextPage = () => {
               {isSubmitting
                 ? "Minting..."
                 : Boolean(hasExistingLicense)
-                  ? "License Already Owned"
+                  ? "You already own Brolli"
                   : "FREE MINT"
               }
             </button>
@@ -178,7 +178,7 @@ const BrolliLicensePage: NextPage = () => {
                 className="rounded-lg border-2 border-base-300"
               />
               <p className="text-center text-sm text-base-content/70">
-                Legal Cover for BUIDLers of Decentralized Systems
+                IP Cover for BUIDLers of Decentralized Systems
               </p>
             </div>
           </div>
@@ -218,7 +218,7 @@ const BrolliLicensePage: NextPage = () => {
         <div className="text-center mb-12">
           
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            The IP Minefield for BUIDLers
+            Why Brolli for BUIDLers?
           </h2>
         </div>
 
@@ -235,7 +235,7 @@ const BrolliLicensePage: NextPage = () => {
             <div className="text-xs text-base-content/50 mt-1">Banks & Tech Giants</div>
           </div>
           <div className="bg-base-100 p-6 rounded-2xl shadow-lg border border-base-300 text-center">
-            <div className="text-4xl font-bold text-accent mb-2">⚠️ WARNING</div>
+            <div className="text-4xl font-bold text-accent mb-2">⚠️ </div>
             <div className="text-sm text-base-content/70 uppercase tracking-wide">Waiting to Strike</div>
             <div className="text-xs text-base-content/50 mt-1">Patent Trolls Target Success</div>
           </div>
@@ -388,7 +388,7 @@ const BrolliLicensePage: NextPage = () => {
             {isSubmitting
               ? "Minting..."
               : Boolean(hasExistingLicense)
-                ? "License Already Owned"
+                ? "You already own Brolli"
                 : "FREE MINT"
             }
           </button>
@@ -410,14 +410,26 @@ const BrolliLicensePage: NextPage = () => {
                 <p className="my-2 font-medium">Mint Your Brolli NFT</p>
             ) : (
               <div>
-                  <h3 className="text-2xl font-bold mb-6 text-secondary">Your Brolli NFTs</h3>
+                  <h3 className="text-2xl font-bold mb-6 text-secondary">My Brolli</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 place-items-center">
                   {yourLicenses.map(license => {
                     return (
                         <div key={license.id} className="flex flex-col bg-base-100 p-5 text-center items-center max-w-xs rounded-3xl shadow-lg border border-neutral">
                         <h2 className="text-xl font-bold">{license.name}</h2>
                         {license.image && renderImage(license.image, license.name)}
-                        <p className="mt-2">{license.description}</p>
+                        <p className="mt-2 text-sm">{license.description}</p>
+
+                        {/* Block Explorer Links */}
+                        <div className="mt-4 w-full">
+                          <a
+                            href={`/blockexplorer/address/${contract?.address}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-xs btn-outline btn-primary"
+                          >
+                            View Contract
+                          </a>
+                        </div>
                       </div>
                     );
                   })}

@@ -7,40 +7,57 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "base64-sol/base64.sol";
 
-contract BrolliLicenseSimple is ERC721Enumerable, Ownable, ReentrancyGuard {
+contract Brolli is ERC721Enumerable, Ownable, ReentrancyGuard {
 	using Counters for Counters.Counter;
 
 	Counters.Counter private _tokenIds;
 
 	struct Meta {
-		string patentName;
-		string imageUri; // PNG URL or ipfs://CID
-		string provenanceCid; // IPFS CID for provenance file (or Patent NFT contract hash)
+		string name;
+		string imageUri;
+		string provenanceCid;
 	}
+
+	// Events
+	event DefaultImageUriUpdated(string newImageUri);
+	event DefaultProvenanceCidUpdated(string newProvenanceCid);
 
 	mapping(uint256 => Meta) public metadataByTokenId;
 	mapping(address => bool) public hasLicense; // Track if address already has a license
-	
+
 	uint256 public constant MAX_SUPPLY = 50; // Maximum number of licenses that can be issued
 
-	constructor() ERC721("Brolli License (Simple)", "BROLLI-S") {}
+	// Default URIs for new mints
+	string public defaultImageUri = "https://tan-everyday-mite-419.mypinata.cloud/ipfs/bafkreialme2ca3b36nzq5rqqdqaw3k2le4uvgrdxtdj33t2j4sn44amisi";
+	string public defaultProvenanceCid = "https://tan-everyday-mite-419.mypinata.cloud/ipfs/bafkreidc7qbkdsfirbetsu5owm56oeqkhwhqlxpfgjio4qy3xexigod2nq";
+
+	constructor() ERC721("Brolli", "BROLLI") {}
 
 	function mint(
-		string memory patentName,
+		string memory name,
 		string memory imageUri,
 		string memory provenanceCid
 	) public nonReentrant returns (uint256) {
-		require(!hasLicense[msg.sender], "Address already has a license");
+		require(!hasLicense[msg.sender], "Address already has Brolli");
 		require(_tokenIds.current() < MAX_SUPPLY, "Maximum supply reached");
-		
+
 		// Set hasLicense BEFORE minting to prevent reentrancy exploits
 		hasLicense[msg.sender] = true;
-		
+
 		_tokenIds.increment();
 		uint256 tokenId = _tokenIds.current();
 		_safeMint(msg.sender, tokenId);
-		metadataByTokenId[tokenId] = Meta({ patentName: patentName, imageUri: imageUri, provenanceCid: provenanceCid });
-		
+
+		// Use default URIs if empty strings provided
+		string memory finalImageUri = bytes(imageUri).length == 0 ? defaultImageUri : imageUri;
+		string memory finalProvenanceCid = bytes(provenanceCid).length == 0 ? defaultProvenanceCid : provenanceCid;
+
+		metadataByTokenId[tokenId] = Meta({
+			name: name,
+			imageUri: finalImageUri,
+			provenanceCid: finalProvenanceCid
+		});
+
 		return tokenId;
 	}
 
@@ -54,14 +71,25 @@ contract BrolliLicenseSimple is ERC721Enumerable, Ownable, ReentrancyGuard {
 		return current >= MAX_SUPPLY ? 0 : MAX_SUPPLY - current;
 	}
 
+	// Owner-only functions to update default URIs
+	function updateDefaultImageUri(string memory newImageUri) public onlyOwner {
+		defaultImageUri = newImageUri;
+		emit DefaultImageUriUpdated(newImageUri);
+	}
+
+	function updateDefaultProvenanceCid(string memory newProvenanceCid) public onlyOwner {
+		defaultProvenanceCid = newProvenanceCid;
+		emit DefaultProvenanceCidUpdated(newProvenanceCid);
+	}
+
 	function tokenURI(uint256 tokenId) public view override returns (string memory) {
 		require(_exists(tokenId), "Token does not exist");
 		Meta storage m = metadataByTokenId[tokenId];
 
 		bytes memory json = abi.encodePacked(
 			"{",
-			'"name":"Brolli for BUIDLers ', m.patentName, '",',
-			'"description":"Legal IP cover for developers of decentralized systems",',
+			'"name":"Brolli ', m.name, '",',
+			'"description":"for BUIDLers",',
 			'"image":"', m.imageUri, '",',
 			'"attributes":[',
 			'{"trait_type":"Provenance CID","value":"', m.provenanceCid, '"}',

@@ -1,11 +1,11 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 
-const deployBrolliLicenseSimple: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+const deployBrolli: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  await deploy("BrolliLicenseSimple", {
+  await deploy("Brolli", {
     from: deployer,
     args: [],
     log: true,
@@ -13,6 +13,6 @@ const deployBrolliLicenseSimple: DeployFunction = async function (hre: HardhatRu
   });
 };
 
-export default deployBrolliLicenseSimple;
+export default deployBrolli;
 
-deployBrolliLicenseSimple.tags = ["BrolliLicenseSimple"]; 
+deployBrolli.tags = ["Brolli"]; 
