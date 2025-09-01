@@ -1,12 +1,12 @@
 [package]
-name = "brolli-license"
+name = "brolli"
 version = "0.1.0"
-description = "Brolli Patent License NFT Program for Solana"
+description = "Brolli NFT"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "lib"]
-name = "brolli_license"
+name = "brolli"
 
 [features]
 no-entrypoint = []
